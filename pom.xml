@@ -11,8 +11,8 @@
     <relativePath />
   </parent>
 
-  <groupId>org.camunda.bpm.extension.reactor.project</groupId>
-  <artifactId>camunda-bpm-reactor-root</artifactId>
+  <groupId>org.cibseven.community.reactor.project</groupId>
+  <artifactId>cibseven-reactor-root</artifactId>
   <version>2.11.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
@@ -24,8 +24,8 @@
   <properties>
     <version.java>17</version.java>
 
-    <camunda.version>7.23.0</camunda.version>
-    <slf4j.version>1.7.25</slf4j.version> <!-- 1.7.26 --> <!-- 1.7.36 -->
+    <cibseven.version>2.0.0</cibseven.version>
+    <slf4j.version>2.0.9</slf4j.version> <!-- 1.7.26 --> <!-- 1.7.36 -->
     <jackson.version>2.9.9</jackson.version> <!-- 2.15.2 -->
     <h2.version>1.4.196</h2.version><!-- 1.4.200 --> <!-- 2.3.232 -->
     <version.assertj>3.24.2</version.assertj><!-- was: 2.9.1, changed for examples -->
@@ -41,23 +41,23 @@
   <dependencyManagement>
     <dependencies>
       <dependency>
-        <groupId>org.camunda.bpm.extension.reactor</groupId>
-        <artifactId>camunda-bpm-reactor-eventbus</artifactId>
+        <groupId>org.cibseven.community.reactor</groupId>
+        <artifactId>cibseven-reactor-eventbus</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>org.camunda.bpm.extension.reactor</groupId>
-        <artifactId>camunda-bpm-reactor-core</artifactId>
+        <groupId>org.cibseven.community.reactor</groupId>
+        <artifactId>cibseven-reactor-core</artifactId>
         <version>${project.version}</version>
         </dependency>
       <dependency>
-        <groupId>org.camunda.bpm.extension.reactor</groupId>
-        <artifactId>camunda-bpm-reactor-spring</artifactId>
+        <groupId>org.cibseven.community.reactor</groupId>
+        <artifactId>cibseven-reactor-spring</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>org.camunda.bpm.extension.reactor</groupId>
-        <artifactId>camunda-bpm-reactor-spring-starter</artifactId>
+        <groupId>org.cibseven.community.reactor</groupId>
+        <artifactId>cibseven-reactor-spring-starter</artifactId>
         <version>${project.version}</version>
       </dependency>
     </dependencies>
@@ -93,14 +93,14 @@
   <!-- repositories used for distribution of releases and snapshots, DO NOT CHANGE -->
   <distributionManagement>
     <repository>
-      <id>camunda-nexus</id>
-      <name>camunda bpm community extensions</name>
-      <url>https://artifacts.camunda.com/artifactory/camunda-bpm-community-extensions/</url>
+      <id>cibseven-community</id>
+      <name>cibseven bpm community extensions</name>
+      <url>https://artifacts.cibseven.org/repository/community/</url>
     </repository>
     <snapshotRepository>
-      <id>camunda-nexus</id>
-      <name>camunda bpm community extensions snapshots</name>
-      <url>https://artifacts.camunda.com/artifactory/camunda-bpm-community-extensions-snapshots/</url>
+      <id>cibseven-community-snapshots</id>
+      <name>cibseven bpm community extensions snapshots</name>
+      <url>https://artifacts.cibseven.org/artifactory/community-snapshots/</url>
       <!-- for maven 2 compatibility -->
       <uniqueVersion>true</uniqueVersion>
     </snapshotRepository>

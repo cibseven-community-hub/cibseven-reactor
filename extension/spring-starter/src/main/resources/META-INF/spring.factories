@@ -1,2 +1,2 @@
 # AutoConfigurations
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=org.camunda.bpm.extension.reactor.spring.CamundaReactorAutoConfiguration
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=org.cibseven.bpm.extension.reactor.spring.CamundaReactorAutoConfiguration

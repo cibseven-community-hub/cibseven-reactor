@@ -2,9 +2,9 @@ name: Build project with Maven
 on:
   pull_request:
   push:
-    branches-ignore: [master]
+    branches-ignore: [master, main]
   schedule:
-  - cron: '2 2 * * 1' # run master builds every monday 
+  - cron: '2 2 * * 1' # run main builds every monday 
 
 jobs:
   build:

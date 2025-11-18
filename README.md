@@ -1,21 +1,15 @@
-[![Camunda Platform 7](https://img.shields.io/badge/Compatible%20with-Camunda%20Platform%207-26d07c)](https://img.shields.io/badge/Compatible%20with-Camunda%20Platform%207-26d07c)
-[![Build project with Maven](https://github.com/camunda-community-hub/camunda-bpm-reactor/actions/workflows/build.yml/badge.svg)](https://github.com/camunda-community-hub/camunda-bpm-reactor/actions/workflows/build.yml) 
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.camunda.bpm.extension.reactor/camunda-bpm-reactor-core/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.camunda.bpm.extension.reactor/camunda-bpm-reactor-core)
-[![](https://img.shields.io/badge/Community%20Extension-An%20open%20source%20community%20maintained%20project-FF4700)](https://github.com/camunda-community-hub/community)
-[![](https://img.shields.io/badge/Lifecycle-Deprecated-yellowgreen)](https://github.com/Camunda-Community-Hub/community/blob/main/extension-lifecycle.md#deprecated-)
-[![](https://img.shields.io/badge/Lifecycle-Unmaintained-lightgrey)](https://github.com/Camunda-Community-Hub/community/blob/main/extension-lifecycle.md#Unmaintained-)
-![](https://img.shields.io/badge/Maintainer%20Wanted-This%20extension%20is%20in%20search%20of%20a%20Maintainer-ff69b4)
+[![CIB seven 2.0.0](https://img.shields.io/badge/CIB%20seven-2.0.0-orange.svg)](https://docs.cibseven.org/manual/2.0/)
+[![Maven Central](https://img.shields.io/maven-central/v/org.cibseven.community.reactor/cibseven-reactor-core?label=Maven%20Central)](https://central.sonatype.com/artifact/org.cibseven.community.reactor/cibseven-reactor-core)
 
-<p align="right">
-  <img src="https://camunda.github.io/camunda-bpm-assert/resources/images/camunda.png" width="50" />
-  <img src="https://avatars1.githubusercontent.com/u/4201559?s=400&v=4" width="50" />
-</p>
+# UNMANTAINED: Note that this project is not mantained
 
-# DEPRECATED: Note that this project is deprecated and archived
+We at CIB group do not plan to support this project by ourselves as a part of CIB seven.
+It has been migrated to the org.cibseven namespace in order to simplify the initial migration for our customers.
+Feel free to reach out, if you want to maintain this project.
 
-# camunda-platform-7-reactor
+# cibseven-reactor
 
-for the previous version, please go to https://github.com/camunda/camunda-bpm-reactor/tree/1.2
+This is a fork of https://github.com/camunda-community-hub/camunda-platform-7-reactor
 
 Event-based listeners and delegates for Camunda BPM.
 
@@ -94,17 +88,21 @@ This extensions works with delegateTasks and delegateEvents directly. These cann
 * use eventbus for message correlation end/start
 * ...
 
-## Maintainer
+## Acknowledgement
+
+We would like to thank the original maintainers, contributors and sponsors for their work on this plugin.
+
+### Original Maintainer
 
 * [Jan Galinski](https://github.com/jangalinski), [Holisticon AG](http://www.holisticon.de/)
 * [Philipp Ossler](https://github.com/saig0), [Camunda Services GmbH](http://www.camunda.org/)
 
-## Contributors
+### Contributors
 
 * [Malte Sörensen](https://github.com/malteser), [Holisticon AG](http://www.holisticon.de/)
 * [Patrick Schalk](https://github.com/pschalk), [Holisticon AG](http://www.holisticon.de/)
 
-## Sponsors
+### Sponsors
 
 ![Kühne+Nagel](https://raw.githubusercontent.com/camunda/camunda-bpm-custom-batch/master/docs/sponsor_kn.jpeg)
 

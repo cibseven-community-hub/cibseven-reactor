@@ -1,0 +1,226 @@
+package org.cibseven.community.reactor.bus;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.cibseven.community.reactor.bus.SelectorBuilder.Context.bpmn;
+import static org.cibseven.community.reactor.bus.SelectorBuilder.Context.cmmn;
+import static org.cibseven.community.reactor.bus.SelectorBuilder.Context.task;
+import static org.cibseven.community.reactor.bus.SelectorBuilder.selector;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+import java.util.function.Consumer;
+
+import org.cibseven.bpm.engine.ProcessEngineException;
+import org.cibseven.bpm.engine.RepositoryService;
+import org.cibseven.bpm.engine.delegate.BpmnError;
+import org.cibseven.bpm.engine.delegate.CaseExecutionListener;
+import org.cibseven.bpm.engine.delegate.DelegateCaseExecution;
+import org.cibseven.bpm.engine.delegate.DelegateExecution;
+import org.cibseven.bpm.engine.delegate.DelegateTask;
+import org.cibseven.bpm.engine.delegate.ExecutionListener;
+import org.cibseven.bpm.engine.delegate.TaskListener;
+import org.cibseven.bpm.engine.repository.CaseDefinition;
+import org.cibseven.bpm.engine.repository.ProcessDefinition;
+import org.cibseven.community.reactor.CamundaReactorTestHelper;
+import org.cibseven.community.reactor.bus.SelectorBuilder.Context;
+import org.cibseven.community.reactor.projectreactor.Event;
+import org.cibseven.community.reactor.projectreactor.selector.Selectors;
+import org.junit.Before;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.experimental.runners.Enclosed;
+import org.junit.rules.ExpectedException;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnit;
+import org.mockito.junit.MockitoRule;
+
+@RunWith(Enclosed.class)
+public class CamundaEventBusTest {
+
+  public static abstract class Common {
+    @Rule
+    public final ExpectedException thrown = ExpectedException.none();
+
+    @Rule
+    public final MockitoRule mockito = MockitoJUnit.rule();
+
+    protected final CamundaEventBus eventBus = new CamundaEventBus();
+
+    @Mock
+    protected DelegateExecution delegateExecution;
+
+    @Mock
+    protected DelegateCaseExecution delegateCaseExecution;
+
+    protected DelegateTask delegateTask = CamundaReactorTestHelper.delegateTask();
+
+    @Mock
+    protected ExecutionListener executionListener;
+
+    @Mock
+    protected TaskListener taskListener;
+
+    @Mock
+    protected CaseExecutionListener caseExecutionListener;
+
+
+  }
+
+  public static class PreventWrongSubscription extends Common {
+
+    @Test
+    public void fails_to_register_caseExecutionListener_to_bpmn() throws Exception {
+      thrown.expect(IllegalArgumentException.class);
+      eventBus.register(selector().context(Context.bpmn), caseExecutionListener);
+    }
+
+    @Test
+    public void fails_to_register_executionListener_to_cmmn() throws Exception {
+      thrown.expect(IllegalArgumentException.class);
+      eventBus.register(selector().context(Context.cmmn), executionListener);
+    }
+
+    @Test
+    public void fails_to_register_taskListener_to_cmmn() throws Exception {
+      thrown.expect(IllegalArgumentException.class);
+      eventBus.register(selector().context(Context.cmmn), taskListener);
+    }
+
+    @Test
+    public void fails_to_register_taskListener_to_bpmn() throws Exception {
+      thrown.expect(IllegalArgumentException.class);
+      eventBus.register(selector().context(Context.bpmn), taskListener);
+    }
+
+    @Test
+    public void register_taskListener_to_task() throws Exception {
+      eventBus.register(selector().context(Context.task), taskListener);
+      // ok
+    }
+
+    @Test
+    public void register_executionListener_to_bpmn() throws Exception {
+      eventBus.register(selector().context(Context.bpmn), executionListener);
+      // ok
+    }
+
+    @Test
+    public void register_caseExecutionListener_to_cmmn() throws Exception {
+      eventBus.register(selector().context(Context.cmmn), caseExecutionListener);
+      // ok
+    }
+  }
+
+  public static class PublishSubscribe extends Common {
+
+    private final RepositoryService repositoryService = mock(RepositoryService.class);
+
+    private ProcessDefinition processDefinition = CamundaReactorTestHelper.processDefinition();
+    private CaseDefinition caseDefinition = CamundaReactorTestHelper.caseDefinition();
+
+
+    @Before
+    public void setUp() throws Exception {
+      when(repositoryService.getProcessDefinition(processDefinition.getId())).thenReturn(processDefinition);
+      when(repositoryService.getCaseDefinition(caseDefinition.getId())).thenReturn(caseDefinition);
+
+    }
+
+
+    @CamundaSelector
+    public class ToAnyTask implements TaskListener {
+
+      private String value;
+
+      @Override
+      public void notify(DelegateTask delegateTask) {
+        value = "foo";
+      }}
+
+    @Test
+    public void tasklistener_registers_to_contextTask_automatically() throws Exception {
+      ToAnyTask listener = new ToAnyTask();
+      eventBus.register(listener);
+
+      when(delegateTask.getProcessEngineServices().getRepositoryService()).thenReturn(repositoryService);
+
+      eventBus.notify(delegateTask);
+
+      assertThat(listener.value).isEqualTo("foo");
+    }
+
+    @Test
+    public void notify_execution() throws Exception {
+      eventBus.register(SelectorBuilder.selector().context(bpmn), executionListener);
+
+      DelegateExecution execution = CamundaReactorTestHelper.delegateExecution();
+      when(execution.getProcessEngineServices().getRepositoryService()).thenReturn(repositoryService);
+
+      eventBus.notify(execution);
+
+      verify(executionListener).notify(execution);
+    }
+
+    @Test
+    public void notify_task() throws Exception {
+      eventBus.register(SelectorBuilder.selector().context(task), taskListener);
+
+      DelegateTask task = CamundaReactorTestHelper.delegateTask();
+      when(task.getProcessEngineServices().getRepositoryService()).thenReturn(repositoryService);
+
+
+      eventBus.notify(task);
+
+      verify(taskListener).notify(task);
+    }
+
+    @Test
+    public void notify_caseExecution() throws Exception {
+      eventBus.register(SelectorBuilder.selector().context(cmmn), caseExecutionListener);
+
+      DelegateCaseExecution execution= CamundaReactorTestHelper.delegateCaseExecution();
+      when(execution.getProcessEngineServices().getRepositoryService()).thenReturn(repositoryService);
+
+      eventBus.notify(execution);
+
+      verify(caseExecutionListener).notify(execution);
+    }
+  }
+
+
+  public static class ErrorHandling extends Common {
+
+    @Test
+    public void raises_runtimeException_when_consumer_fails() throws Exception {
+      eventBus.get().on(Selectors.matchAll(), new Consumer<Event<String>>() {
+        @Override
+        public void accept(Event<String> event) {
+          throw new ProcessEngineException("fail");
+        }
+      });
+
+      thrown.expect(RuntimeException.class);
+
+      eventBus.get().notify(Selectors.$("any"), Event.wrap("event"));
+    }
+
+    @Test
+    public void raises_bpmnError() throws Exception {
+      eventBus.get().on(Selectors.matchAll(), new Consumer<Event<String>>() {
+        @Override
+        public void accept(Event<String> event) {
+          throw new BpmnError("error");
+        }
+      });
+
+      thrown.expect(BpmnError.class);
+
+      eventBus.get().notify(Selectors.$("any"), Event.wrap("event"));
+
+    }
+
+  }
+
+}

@@ -1,6 +1,6 @@
 # project-reactor eventbus
 
-The camunda-bpm-reactor extension relies heavily on
+The cibseven-reactor extension relies heavily on
 the eventbus provided by projectreactor in version 2.0.8.
 
 Unfortunately, with the new mjor release of projectreactor (3.x)
@@ -10,7 +10,7 @@ see issue https://github.com/reactor/reactor-bus/issues/3.
 We decided to copy the sources to this module and upgrade the functionality
 to support java 8.
 
-This module does not depend on camunda 
+This module does not depend on cibseven 
 and can be used as replacement for the
 2.0.8.RELEASE version of eventbus and
 reactor-core.

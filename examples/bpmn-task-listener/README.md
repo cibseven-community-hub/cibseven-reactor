@@ -22,8 +22,8 @@ Add the plugin as dependency in pom.xml:
 <dependencies>
   ...
   <dependency>
-    <groupId>org.camunda.bpm.extension</groupId>
-    <artifactId>camunda-bpm-reactor-core</artifactId>
+    <groupId>org.cibseven.community.reactor</groupId>
+    <artifactId>cibseven-reactor-core</artifactId>
   </dependency>
   ...
 </dependencies>

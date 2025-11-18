@@ -26,3 +26,11 @@ jobs:
           ${{ runner.os }}-maven-
     - name: Run Maven
       run: mvn -B clean install com.mycila:license-maven-plugin:check
+    - name: Publish Test Results
+      uses: dorny/test-reporter@v1
+      if: always()
+      with:
+        name: Maven Test Results
+        path: '**/target/surefire-reports/TEST-*.xml'
+        reporter: java-junit
+        fail-on-error: true

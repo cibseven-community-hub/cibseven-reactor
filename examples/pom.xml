@@ -11,10 +11,6 @@
   <artifactId>cibseven-reactor-example-root</artifactId>
   <packaging>pom</packaging>
 
-  <properties>
-    <groupId.example>org.camunda.bpm.extension.reactor.example</groupId.example>
-  </properties>
-
   <dependencyManagement>
     <dependencies>
       <dependency>

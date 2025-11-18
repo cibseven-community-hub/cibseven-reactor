@@ -52,19 +52,19 @@ import org.cibseven.community.reactor.projectreactor.support.Recyclable;
 public class Buffer implements Recyclable, Comparable<Buffer>, Iterable<Byte>, ReadableByteChannel, WritableByteChannel {
 
   /**
-   * The size, in bytes, of a small buffer. Can be configured using the {@code org.camunda.bpm.extension.reactor.projectreactor.io.defaultBufferSize} system
+   * The size, in bytes, of a small buffer. Can be configured using the {@code org.cibseven.community.reactor.projectreactor.io.defaultBufferSize} system
    * property. Default to 16384 bytes.
    */
   public static int SMALL_BUFFER_SIZE = Integer.parseInt(
-    System.getProperty("org.camunda.bpm.extension.reactor.projectreactor.io.defaultBufferSize", "" + 1024 * 16)
+    System.getProperty("org.cibseven.community.reactor.projectreactor.io.defaultBufferSize", "" + 1024 * 16)
   );
 
   /**
-   * The maximum allowed buffer size in bytes. Can be configured using the {@code org.camunda.bpm.extension.reactor.projectreactor.io.maxBufferSize} system
+   * The maximum allowed buffer size in bytes. Can be configured using the {@code orgcibseven.community.reactor.projectreactor.io.maxBufferSize} system
    * property. Defaults to 16384000 bytes.
    */
   public static int MAX_BUFFER_SIZE = Integer.parseInt(
-    System.getProperty("org.camunda.bpm.extension.reactor.projectreactor.io.maxBufferSize", "" + 1024 * 1000 * 16)
+    System.getProperty("org.cibseven.community.reactor.projectreactor.io.maxBufferSize", "" + 1024 * 1000 * 16)
   );
 
   private static final Charset UTF8 = Charset.forName("UTF-8");

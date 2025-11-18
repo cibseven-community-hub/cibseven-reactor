@@ -212,7 +212,7 @@ public class Environment implements Iterable<Map.Entry<String, Dispatcher>>, Clo
    * Obtain a multi threaded dispatcher useful for scaling up slow processing.
    * <p/>
    * <p/>
-   * The Multithreaded Dispatcher is suitable for IO work if combined with reactor event buses {@code org.camunda.bpm.extension.reactor.projectreactor.bus
+   * The Multithreaded Dispatcher is suitable for IO work if combined with reactor event buses {@code org.cibseven.community.reactor.projectreactor.bus
    * .EventBus} or streams {@code reactor.rx.Stream} using {@code reactor.rx.Stream#consumeOn}.
    *
    * @return a dispatcher from the default pool, usually a WorkQueueDispatcher.
@@ -225,7 +225,7 @@ public class Environment implements Iterable<Map.Entry<String, Dispatcher>>, Clo
    * Obtain a cached dispatcher out of {@link this#PROCESSORS} maximum pooled. The dispatchers are created lazily so
    * it is preferrable to fetch them out of the critical path.
    * <p/>
-   * The Cached Dispatcher is suitable for IO work if combined with distinct reactor event buses {@code org.camunda.bpm.extension.reactor.projectreactor.bus
+   * The Cached Dispatcher is suitable for IO work if combined with distinct reactor event buses {@code org.cibseven.community.reactor.projectreactor.bus
    * .EventBus} or streams {@code reactor.rx.Stream}.
    *
    * @return a dispatcher from the default pool, usually a RingBufferDispatcher.
@@ -239,7 +239,7 @@ public class Environment implements Iterable<Map.Entry<String, Dispatcher>>, Clo
    * Obtain a registred dispatcher. The dispatchers are created lazily so it is preferrable to fetch them out of the
    * critical path.
    * <p/>
-   * The Cached Dispatcher is suitable for IO work if combined with distinct reactor event buses {@code org.camunda.bpm.extension.reactor.projectreactor.bus
+   * The Cached Dispatcher is suitable for IO work if combined with distinct reactor event buses {@code org.cibseven.community.reactor.projectreactor.bus
    * .EventBus} or streams {@code reactor.rx.Stream}.
    *
    * @param key the dispatcher name to find

@@ -10,7 +10,7 @@ import org.junit.Rule;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.camunda.bpm.engine.test.assertions.ProcessEngineAssertions.reset;
+import static org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests.reset;
 import static org.camunda.bpm.engine.test.assertions.ProcessEngineTests.runtimeService;
 import static org.camunda.bpm.engine.test.mock.Mocks.register;
 

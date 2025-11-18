@@ -1,27 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
 
-  <parent>
-    <groupId>org.camunda.bpm.extension.reactor.project</groupId>
-    <artifactId>camunda-bpm-reactor-extension-root</artifactId>
-    <version>2.11.0-SNAPSHOT</version>
-  </parent>
+	<parent>
+		<groupId>org.camunda.bpm.extension.reactor.project</groupId>
+		<artifactId>camunda-bpm-reactor-extension-root</artifactId>
+		<version>2.11.0-SNAPSHOT</version>
+	</parent>
 
-  <groupId>org.camunda.bpm.extension.reactor</groupId>
-  <artifactId>camunda-bpm-reactor-core</artifactId>
+	<groupId>org.camunda.bpm.extension.reactor</groupId>
+	<artifactId>camunda-bpm-reactor-core</artifactId>
 
-  <dependencies>
-    <dependency>
-    <groupId>org.camunda.bpm</groupId>
-    <artifactId>camunda-engine</artifactId>
-    <scope>provided</scope>
-  </dependency>
-    <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>camunda-bpm-reactor-eventbus</artifactId>
-    </dependency>
-  </dependencies>
+	<dependencies>
+		<dependency>
+			<groupId>org.camunda.bpm</groupId>
+			<artifactId>camunda-engine</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>camunda-bpm-reactor-eventbus</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.assertj</groupId>
+			<artifactId>assertj-core</artifactId>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.mockito</groupId>
+		    <artifactId>mockito-core</artifactId>
+		    <version>3.12.4</version>
+		    <scope>test</scope>
+		</dependency>
+
+	</dependencies>
 
 </project>

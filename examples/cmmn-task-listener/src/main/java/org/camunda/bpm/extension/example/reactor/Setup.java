@@ -14,6 +14,7 @@ public class Setup {
       this.getProcessEnginePlugins().add(CamundaReactor.plugin());
       this.jobExecutorActivate = false;
       this.isDbMetricsReporterActivate = false;
+      this.enforceHistoryTimeToLive = false;
     }
   };
 

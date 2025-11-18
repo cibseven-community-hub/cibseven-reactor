@@ -49,5 +49,14 @@
       <artifactId>jcl-over-slf4j</artifactId>
       <scope>test</scope>
     </dependency>
+    
+    <dependency>
+	  <groupId>org.junit.vintage</groupId>
+	  <artifactId>junit-vintage-engine</artifactId>
+	  <!-- 5.11.4 -->
+	  <!--<version>5.10.5</version>-->
+	  <scope>test</scope>
+	</dependency>
+	
   </dependencies>
 </project>

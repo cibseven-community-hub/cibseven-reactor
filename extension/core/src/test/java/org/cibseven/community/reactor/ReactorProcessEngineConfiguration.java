@@ -1,0 +1,57 @@
+package org.cibseven.community.reactor;
+
+import org.cibseven.bpm.engine.impl.cfg.StandaloneInMemProcessEngineConfiguration;
+import org.cibseven.bpm.engine.test.ProcessEngineRule;
+import org.cibseven.bpm.engine.test.mock.MockExpressionManager;
+import org.cibseven.community.reactor.bus.CamundaEventBus;
+import org.cibseven.community.reactor.plugin.ReactorProcessEnginePlugin;
+import org.slf4j.bridge.SLF4JBridgeHandler;
+
+public class ReactorProcessEngineConfiguration extends StandaloneInMemProcessEngineConfiguration {
+    static {
+      SLF4JBridgeHandler.removeHandlersForRootLogger();
+      SLF4JBridgeHandler.install();
+    }
+
+  public static ProcessEngineRule buildRule() {
+    return buildRule(new CamundaEventBus());
+  }
+
+  public static ProcessEngineRule buildRule(final CamundaEventBus camundaEventBus) {
+    final ReactorProcessEngineConfiguration configuration = new ReactorProcessEngineConfiguration(camundaEventBus);
+
+    return new ProcessEngineRule(configuration.buildProcessEngine());
+  }
+
+  public static ProcessEngineRule buildRule(final CamundaEventBus camundaEventBus, final boolean reactorListenerFirstOnUserTask) {
+    final ReactorProcessEngineConfiguration configuration = new ReactorProcessEngineConfiguration(camundaEventBus, reactorListenerFirstOnUserTask);
+
+    return new ProcessEngineRule(configuration.buildProcessEngine());
+  }
+
+  public ReactorProcessEngineConfiguration(final CamundaEventBus camundaEventBus) {
+    this.history = HISTORY_FULL;
+    this.databaseSchemaUpdate = DB_SCHEMA_UPDATE_DROP_CREATE;
+
+    this.jobExecutorActivate = false;
+    this.expressionManager = new MockExpressionManager();
+    
+    this.historyTimeToLive = "P180D";
+
+    this.getProcessEnginePlugins().add(new ReactorProcessEnginePlugin(camundaEventBus));
+  }
+
+  public ReactorProcessEngineConfiguration(final CamundaEventBus camundaEventBus, final boolean reactorListenerFirstOnUserTask) {
+    this.history = HISTORY_FULL;
+    this.databaseSchemaUpdate = DB_SCHEMA_UPDATE_DROP_CREATE;
+
+    this.jobExecutorActivate = false;
+    this.expressionManager = new MockExpressionManager();
+    
+    this.historyTimeToLive = "P180D";
+
+    this.getProcessEnginePlugins().add(new ReactorProcessEnginePlugin(camundaEventBus, reactorListenerFirstOnUserTask));
+  }
+
+
+}

@@ -1,0 +1,18 @@
+package org.cibseven.community.reactor.event;
+
+import org.cibseven.bpm.engine.delegate.DelegateTask;
+import org.cibseven.bpm.engine.delegate.TaskListener;
+import java.util.function.Consumer;
+
+public class DelegateTaskEvent extends DelegateEvent<DelegateTask> {
+
+  public static Consumer<DelegateTaskEvent> consumer(final TaskListener listener) {
+    return event -> listener.notify(event.getData());
+  }
+
+  private static final long serialVersionUID = 1L;
+
+  public DelegateTaskEvent(final DelegateTask data) {
+    super(data);
+  }
+}

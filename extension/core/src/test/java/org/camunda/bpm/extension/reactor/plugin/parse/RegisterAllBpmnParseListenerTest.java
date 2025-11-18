@@ -23,12 +23,14 @@ public class RegisterAllBpmnParseListenerTest {
     final TaskDefinition taskDefinition = new TaskDefinition(mock(TaskFormHandler.class));
     parseListener.addTaskListener(taskDefinition);
 
-    assertThat(taskDefinition.getTaskListeners()).hasSize(4);
+    assertThat(taskDefinition.getTaskListeners()).hasSize(6);
 
-    assertThat(taskDefinition.getTaskListeners(EVENTNAME_ASSIGNMENT)).containsExactly(taskListener);
-    assertThat(taskDefinition.getTaskListeners(EVENTNAME_COMPLETE)).containsExactly(taskListener);
-    assertThat(taskDefinition.getTaskListeners(EVENTNAME_CREATE)).containsExactly(taskListener);
-    assertThat(taskDefinition.getTaskListeners(EVENTNAME_DELETE)).containsExactly(taskListener);
+    assertThat(taskDefinition.getTaskListenersForEvent(EVENTNAME_ASSIGNMENT)).containsExactly(taskListener);
+    assertThat(taskDefinition.getTaskListenersForEvent(EVENTNAME_COMPLETE)).containsExactly(taskListener);
+    assertThat(taskDefinition.getTaskListenersForEvent(EVENTNAME_CREATE)).containsExactly(taskListener);
+    assertThat(taskDefinition.getTaskListenersForEvent(EVENTNAME_DELETE)).containsExactly(taskListener);
+    assertThat(taskDefinition.getTaskListenersForEvent(EVENTNAME_TIMEOUT)).containsExactly(taskListener);
+    assertThat(taskDefinition.getTaskListenersForEvent(EVENTNAME_UPDATE)).containsExactly(taskListener);
   }
 
   @Test
@@ -39,15 +41,19 @@ public class RegisterAllBpmnParseListenerTest {
     taskDefinition.addTaskListener(EVENTNAME_COMPLETE, taskListenerFromBpmn);
     taskDefinition.addTaskListener(EVENTNAME_CREATE, taskListenerFromBpmn);
     taskDefinition.addTaskListener(EVENTNAME_DELETE, taskListenerFromBpmn);
+    taskDefinition.addTaskListener(EVENTNAME_TIMEOUT, taskListenerFromBpmn);
+    taskDefinition.addTaskListener(EVENTNAME_UPDATE, taskListenerFromBpmn);
 
     parseListener.addTaskListener(taskDefinition);
 
-    assertThat(taskDefinition.getTaskListeners()).hasSize(4);
+    assertThat(taskDefinition.getTaskListeners()).hasSize(6);
 
-    assertThat(taskDefinition.getTaskListeners(EVENTNAME_ASSIGNMENT)).containsExactly(taskListenerFromBpmn, taskListener);
-    assertThat(taskDefinition.getTaskListeners(EVENTNAME_COMPLETE)).containsExactly(taskListenerFromBpmn, taskListener);
-    assertThat(taskDefinition.getTaskListeners(EVENTNAME_CREATE)).containsExactly(taskListenerFromBpmn, taskListener);
-    assertThat(taskDefinition.getTaskListeners(EVENTNAME_DELETE)).containsExactly(taskListenerFromBpmn, taskListener);
+    assertThat(taskDefinition.getTaskListenersForEvent(EVENTNAME_ASSIGNMENT)).containsExactly(taskListenerFromBpmn, taskListener);
+    assertThat(taskDefinition.getTaskListenersForEvent(EVENTNAME_COMPLETE)).containsExactly(taskListenerFromBpmn, taskListener);
+    assertThat(taskDefinition.getTaskListenersForEvent(EVENTNAME_CREATE)).containsExactly(taskListenerFromBpmn, taskListener);
+    assertThat(taskDefinition.getTaskListenersForEvent(EVENTNAME_DELETE)).containsExactly(taskListenerFromBpmn, taskListener);
+    assertThat(taskDefinition.getTaskListenersForEvent(EVENTNAME_TIMEOUT)).containsExactly(taskListenerFromBpmn, taskListener);
+    assertThat(taskDefinition.getTaskListenersForEvent(EVENTNAME_UPDATE)).containsExactly(taskListenerFromBpmn, taskListener);
   }
 
   @Test
@@ -58,15 +64,19 @@ public class RegisterAllBpmnParseListenerTest {
     taskDefinition.addTaskListener(EVENTNAME_COMPLETE, taskListenerFromBpmn);
     taskDefinition.addTaskListener(EVENTNAME_CREATE, taskListenerFromBpmn);
     taskDefinition.addTaskListener(EVENTNAME_DELETE, taskListenerFromBpmn);
+    taskDefinition.addTaskListener(EVENTNAME_TIMEOUT, taskListenerFromBpmn);
+    taskDefinition.addTaskListener(EVENTNAME_UPDATE, taskListenerFromBpmn);
 
     final RegisterAllBpmnParseListener parseListener = new RegisterAllBpmnParseListener(taskListener, executionListener, true);
     parseListener.addTaskListener(taskDefinition);
 
-    assertThat(taskDefinition.getTaskListeners()).hasSize(4);
+    assertThat(taskDefinition.getTaskListeners()).hasSize(6);
 
-    assertThat(taskDefinition.getTaskListeners(EVENTNAME_ASSIGNMENT)).containsExactly(taskListener, taskListenerFromBpmn);
-    assertThat(taskDefinition.getTaskListeners(EVENTNAME_COMPLETE)).containsExactly(taskListener, taskListenerFromBpmn);
-    assertThat(taskDefinition.getTaskListeners(EVENTNAME_CREATE)).containsExactly(taskListener, taskListenerFromBpmn);
-    assertThat(taskDefinition.getTaskListeners(EVENTNAME_DELETE)).containsExactly(taskListener, taskListenerFromBpmn);
+    assertThat(taskDefinition.getTaskListenersForEvent(EVENTNAME_ASSIGNMENT)).containsExactly(taskListener, taskListenerFromBpmn);
+    assertThat(taskDefinition.getTaskListenersForEvent(EVENTNAME_COMPLETE)).containsExactly(taskListener, taskListenerFromBpmn);
+    assertThat(taskDefinition.getTaskListenersForEvent(EVENTNAME_CREATE)).containsExactly(taskListener, taskListenerFromBpmn);
+    assertThat(taskDefinition.getTaskListenersForEvent(EVENTNAME_DELETE)).containsExactly(taskListener, taskListenerFromBpmn);
+    assertThat(taskDefinition.getTaskListenersForEvent(EVENTNAME_TIMEOUT)).containsExactly(taskListener, taskListenerFromBpmn);
+    assertThat(taskDefinition.getTaskListenersForEvent(EVENTNAME_UPDATE)).containsExactly(taskListener, taskListenerFromBpmn);
   }
 }

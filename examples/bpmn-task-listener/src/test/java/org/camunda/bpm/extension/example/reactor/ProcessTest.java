@@ -1,11 +1,12 @@
 package org.camunda.bpm.extension.example.reactor;
 
-import static org.camunda.bpm.engine.test.assertions.ProcessEngineAssertions.assertThat;
-import static org.camunda.bpm.engine.test.assertions.ProcessEngineTests.runtimeService;
-import static org.camunda.bpm.engine.test.assertions.ProcessEngineTests.task;
-import static org.camunda.bpm.engine.test.assertions.ProcessEngineTests.taskQuery;
-import static org.camunda.bpm.engine.test.assertions.ProcessEngineTests.taskService;
+import static org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests.assertThat;
+import static org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests.runtimeService;
+import static org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests.task;
+import static org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests.taskQuery;
+import static org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests.taskService;
 
+import org.assertj.core.api.Assertions;
 import org.camunda.bpm.engine.runtime.ProcessInstance;
 import org.camunda.bpm.engine.task.Task;
 import org.camunda.bpm.engine.test.Deployment;
@@ -45,9 +46,9 @@ public class ProcessTest {
     assertThat(processInstance).isWaitingAt("task_a");
 
     Task t = taskService().createTaskQuery().singleResult();
-    assertThat(taskQuery().taskId(t.getId()).taskCandidateGroup(Process.GROUP_1).includeAssignedTasks().singleResult()).isNotNull();
-    assertThat(taskQuery().taskId(t.getId()).taskCandidateGroup(Process.GROUP_2).includeAssignedTasks().singleResult()).isNotNull();
-    assertThat(taskQuery().taskId(t.getId()).taskCandidateGroup(Process.GROUP_3).includeAssignedTasks().singleResult()).isNotNull();
+    Assertions.assertThat(taskQuery().taskId(t.getId()).taskCandidateGroup(Process.GROUP_1).includeAssignedTasks().singleResult()).isNotNull();
+    Assertions.assertThat(taskQuery().taskId(t.getId()).taskCandidateGroup(Process.GROUP_2).includeAssignedTasks().singleResult()).isNotNull();
+    Assertions.assertThat(taskQuery().taskId(t.getId()).taskCandidateGroup(Process.GROUP_3).includeAssignedTasks().singleResult()).isNotNull();
   }
 
 }

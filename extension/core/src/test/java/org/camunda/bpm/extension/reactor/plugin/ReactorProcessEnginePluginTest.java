@@ -1,6 +1,6 @@
 package org.camunda.bpm.extension.reactor.plugin;
 
-import static org.camunda.bpm.engine.test.assertions.ProcessEngineTests.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.camunda.bpm.extension.reactor.CamundaReactor.selector;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;

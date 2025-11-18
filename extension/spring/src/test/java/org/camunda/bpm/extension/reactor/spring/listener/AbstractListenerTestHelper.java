@@ -1,16 +1,15 @@
 package org.camunda.bpm.extension.reactor.spring.listener;
 
-import org.camunda.bpm.engine.delegate.DelegateCaseExecution;
-import org.camunda.bpm.engine.delegate.DelegateExecution;
-import org.camunda.bpm.engine.delegate.DelegateTask;
-import org.camunda.bpm.extension.reactor.bus.CamundaEventBus;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
 import static org.mockito.Mockito.RETURNS_DEEP_STUBS;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+
+import org.camunda.bpm.engine.delegate.DelegateCaseExecution;
+import org.camunda.bpm.engine.delegate.DelegateExecution;
+import org.camunda.bpm.engine.delegate.DelegateTask;
+import org.camunda.bpm.engine.repository.ProcessDefinition;
+import org.camunda.bpm.extension.reactor.bus.CamundaEventBus;
+import org.springframework.beans.factory.annotation.Autowired;
 
 
 public class AbstractListenerTestHelper {
@@ -30,6 +29,13 @@ public class AbstractListenerTestHelper {
     when(task.getTaskDefinitionKey()).thenReturn(taskName);
     when(task.getProcessDefinitionId()).thenReturn(processDefinitionId);
     when(task.getEventName()).thenReturn(eventName);
+    
+    // Extract process key from processDefinitionId (e.g., "process:1:1" -> "process")
+    String processKey = processDefinitionId.split(":")[0];
+    ProcessDefinition processDefinition = mock(ProcessDefinition.class);
+    when(processDefinition.getKey()).thenReturn(processKey);
+    when(task.getProcessEngineServices().getRepositoryService().getProcessDefinition(processDefinitionId))
+        .thenReturn(processDefinition);
 
     return task;
   }
@@ -41,6 +47,13 @@ public class AbstractListenerTestHelper {
     when(execution.getProcessDefinitionId()).thenReturn("process:1:1");
     when(execution.getEventName()).thenReturn("start");
     when(execution.getCurrentActivityId()).thenReturn("service1");
+    
+    // Extract process key from processDefinitionId
+    String processKey = "process";
+    ProcessDefinition processDefinition = mock(ProcessDefinition.class);
+    when(processDefinition.getKey()).thenReturn(processKey);
+    when(execution.getProcessEngineServices().getRepositoryService().getProcessDefinition("process:1:1"))
+        .thenReturn(processDefinition);
 
     return execution;
   }
@@ -52,6 +65,13 @@ public class AbstractListenerTestHelper {
     when(execution.getCaseDefinitionId()).thenReturn("process:1:1");
     when(execution.getEventName()).thenReturn("start");
     when(execution.getActivityId()).thenReturn("service1");
+    
+    // Extract case key from caseDefinitionId
+    String caseKey = "process";
+    org.camunda.bpm.engine.repository.CaseDefinition caseDefinition = mock(org.camunda.bpm.engine.repository.CaseDefinition.class);
+    when(caseDefinition.getKey()).thenReturn(caseKey);
+    when(execution.getProcessEngineServices().getRepositoryService().getCaseDefinition("process:1:1"))
+        .thenReturn(caseDefinition);
 
     return execution;
   }

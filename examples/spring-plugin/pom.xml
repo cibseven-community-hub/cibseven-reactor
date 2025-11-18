@@ -33,25 +33,35 @@
     <dependency>
       <groupId>org.camunda.bpm.springboot</groupId>
       <artifactId>camunda-bpm-spring-boot-starter</artifactId>
-      <version>${camunda-spring-boot-starter.version}</version>
     </dependency>
 
     <dependency>
       <groupId>com.h2database</groupId>
       <artifactId>h2</artifactId>
+      <version>${h2.version}</version>
     </dependency>
 
     <!-- test -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
+      <version>${spring-boot.version}</version>
       <scope>test</scope>
     </dependency>
 
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>jul-to-slf4j</artifactId>
+      <version>${slf4j.version}</version>
       <scope>test</scope>
     </dependency>
+    
+    <dependency>
+	  <groupId>org.junit.vintage</groupId>
+	  <artifactId>junit-vintage-engine</artifactId>
+	  <!-- 5.10.5 -->
+	  <version>5.11.4</version>
+	  <scope>test</scope>
+	</dependency>
   </dependencies>
 </project>

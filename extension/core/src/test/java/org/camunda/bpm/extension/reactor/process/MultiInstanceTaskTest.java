@@ -17,7 +17,7 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
-import static org.camunda.bpm.engine.test.assertions.ProcessEngineAssertions.reset;
+import static org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests.reset;
 
 public class MultiInstanceTaskTest {
 

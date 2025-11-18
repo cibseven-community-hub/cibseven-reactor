@@ -35,6 +35,8 @@ public class ReactorProcessEngineConfiguration extends StandaloneInMemProcessEng
 
     this.jobExecutorActivate = false;
     this.expressionManager = new MockExpressionManager();
+    
+    this.historyTimeToLive = "P180D";
 
     this.getProcessEnginePlugins().add(new ReactorProcessEnginePlugin(camundaEventBus));
   }
@@ -45,6 +47,8 @@ public class ReactorProcessEngineConfiguration extends StandaloneInMemProcessEng
 
     this.jobExecutorActivate = false;
     this.expressionManager = new MockExpressionManager();
+    
+    this.historyTimeToLive = "P180D";
 
     this.getProcessEnginePlugins().add(new ReactorProcessEnginePlugin(camundaEventBus, reactorListenerFirstOnUserTask));
   }

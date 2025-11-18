@@ -16,6 +16,7 @@ public class Setup {
       this.jobExecutorActivate = false;
       this.isDbMetricsReporterActivate = false;
       this.idGenerator = new StrongUuidGenerator(); // should be used for production
+      this.enforceHistoryTimeToLive = false;
     }
   };
 

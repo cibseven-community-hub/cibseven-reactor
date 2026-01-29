@@ -1,4 +1,4 @@
-# Camunda BPM Reactor Examples
+# CIB seven Reactor Examples
 
 * [Task Listener for BPMN](bpmn-task-listener)
 * [Task Listener for CMMN](cmmn-task-listener)

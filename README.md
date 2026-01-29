@@ -1,17 +1,11 @@
 [![CIB seven 2.0.0](https://img.shields.io/badge/CIB%20seven-2.0.0-orange.svg)](https://docs.cibseven.org/manual/2.0/)
 [![Maven Central](https://img.shields.io/maven-central/v/org.cibseven.community.reactor/cibseven-reactor-core?label=Maven%20Central)](https://central.sonatype.com/artifact/org.cibseven.community.reactor/cibseven-reactor-core)
 
-# UNMANTAINED: Note that this project is not mantained
-
-We at CIB group do not plan to support this project by ourselves as a part of CIB seven.
-It has been migrated to the org.cibseven namespace in order to simplify the initial migration for our customers.
-Feel free to reach out, if you want to maintain this project.
-
 # cibseven-reactor
 
 This is a fork of https://github.com/camunda-community-hub/camunda-platform-7-reactor
 
-Event-based listeners and delegates for Camunda BPM.
+Event-based listeners and delegates for [CIB seven](https://github.com/cibseven/cibseven).
 
 > A note on this extension:
 > the underlying reactor-eventbus was dropped when the reactor framework moved to pivotal afew years ago.

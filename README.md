@@ -5,7 +5,7 @@
 
 This is a fork of https://github.com/camunda-community-hub/camunda-platform-7-reactor
 
-Event-based listeners and delegates for Camunda BPM.
+Event-based listeners and delegates for [CIB seven](https://github.com/cibseven/cibseven).
 
 > A note on this extension:
 > the underlying reactor-eventbus was dropped when the reactor framework moved to pivotal afew years ago.

@@ -10,6 +10,7 @@
 
   <groupId>org.cibseven.community.reactor.example</groupId>
   <artifactId>cibseven-reactor-example-bpmn-execution-listener</artifactId>
+  <name>CIB seven Reactor Example - BPMN Execution Listener</name>
 
   <dependencyManagement>
     <dependencies>

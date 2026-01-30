@@ -9,6 +9,7 @@
   </parent>
 
   <artifactId>cibseven-reactor-extension-root</artifactId>
+  <name>CIB seven Reactor Extension</name>
   <packaging>pom</packaging>
 
   <modules>

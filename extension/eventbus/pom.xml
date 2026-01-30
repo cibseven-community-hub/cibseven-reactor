@@ -10,6 +10,7 @@
 
   <groupId>org.cibseven.community.reactor</groupId>
   <artifactId>cibseven-reactor-eventbus</artifactId>
+  <name>CIB seven Reactor Event Bus</name>
 
   <properties>
     <reactive-streams.version>1.0.1</reactive-streams.version>

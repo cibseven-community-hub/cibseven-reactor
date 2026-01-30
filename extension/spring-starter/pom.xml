@@ -10,6 +10,7 @@
 
   <groupId>org.cibseven.community.reactor</groupId>
   <artifactId>cibseven-reactor-spring-starter</artifactId>
+  <name>CIB seven Reactor Spring Starter</name>
 
   <dependencies>
     <dependency>

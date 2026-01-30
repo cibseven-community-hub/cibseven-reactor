@@ -9,6 +9,7 @@
 
   <groupId>org.cibseven.community.reactor.example</groupId>
   <artifactId>cibseven-reactor-example-cmmn-task-listener</artifactId>
+  <name>CIB seven Reactor Example - CMMN Task Listener</name>
 
   <dependencyManagement>
     <dependencies>

@@ -10,6 +10,7 @@
 
   <groupId>org.cibseven.community.reactor.example</groupId>
   <artifactId>cibseven-reactor-example-bpmn-task-listener</artifactId>
+  <name>CIB seven Reactor Example - BPMN Task Listener</name>
 
   <dependencyManagement>
     <dependencies>

@@ -13,6 +13,7 @@
 
 	<groupId>org.cibseven.community.reactor</groupId>
 	<artifactId>cibseven-reactor-core</artifactId>
+	<name>CIB seven Reactor Core</name>
 
 	<dependencies>
 		<dependency>

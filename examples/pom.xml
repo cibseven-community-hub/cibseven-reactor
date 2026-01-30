@@ -9,6 +9,7 @@
   </parent>
 
   <artifactId>cibseven-reactor-example-root</artifactId>
+  <name>CIB seven Reactor Examples</name>
   <packaging>pom</packaging>
 
   <dependencyManagement>

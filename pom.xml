@@ -13,7 +13,7 @@
 
   <groupId>org.cibseven.community.reactor.project</groupId>
   <artifactId>cibseven-reactor-root</artifactId>
-  <version>2.0.0</version>
+  <version>2.1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>CIB seven Reactor</name>
   <description>Reactor event bus for CIB seven Process Engine</description>
@@ -27,13 +27,13 @@
   <properties>
     <version.java>17</version.java>
 
-    <cibseven.version>2.0.0</cibseven.version>
+    <cibseven.version>2.1.0</cibseven.version>
     <slf4j.version>1.7.26</slf4j.version>
     <jackson.version>2.15.2</jackson.version>
     <h2.version>2.3.232</h2.version>
     <version.assertj>3.24.2</version.assertj><!-- changed from 2.9.1 for examples compatibility -->
 
-    <spring-boot.version>3.4.4</spring-boot.version>
+    <spring-boot.version>3.5.6</spring-boot.version>
 
     <surefire.runOrder>reversealphabetical</surefire.runOrder>
     <maven.javadoc.failOnError>false</maven.javadoc.failOnError>

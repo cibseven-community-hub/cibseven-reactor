@@ -1,4 +1,4 @@
-[![CIB seven 2.0.0](https://img.shields.io/badge/CIB%20seven-2.0.0-orange.svg)](https://docs.cibseven.org/manual/2.0/)
+[![CIB seven 2.1.0](https://img.shields.io/badge/CIB%20seven-2.1.0-orange.svg)](https://docs.cibseven.org/manual/2.1/)
 [![Maven Central](https://img.shields.io/maven-central/v/org.cibseven.community.reactor/cibseven-reactor-core?label=Maven%20Central)](https://central.sonatype.com/artifact/org.cibseven.community.reactor/cibseven-reactor-core)
 
 # cibseven-reactor

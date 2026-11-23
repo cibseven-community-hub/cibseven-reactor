@@ -24,4 +24,9 @@ public class CamundaReactorConfigurationTest {
   public void inject_sucessfully() {
     assertThat(plugin.getEventBus()).isEqualTo(bus);
   }
+
+  @Test
+  public void reactor_listener_first_on_user_task_defaults_to_false() {
+    assertThat(plugin.isReactorListenerFirstOnUserTask()).isFalse();
+  }
 }

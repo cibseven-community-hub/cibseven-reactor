@@ -59,6 +59,10 @@ public class ReactorProcessEnginePlugin extends AbstractProcessEnginePlugin {
     return eventBus;
   }
 
+  public boolean isReactorListenerFirstOnUserTask() {
+    return reactorListenerFirstOnUserTask;
+  }
+
   private static List<BpmnParseListener> customPreBPMNParseListeners(final ProcessEngineConfigurationImpl processEngineConfiguration) {
     if (processEngineConfiguration.getCustomPreBPMNParseListeners() == null) {
       processEngineConfiguration.setCustomPreBPMNParseListeners(new ArrayList<>());

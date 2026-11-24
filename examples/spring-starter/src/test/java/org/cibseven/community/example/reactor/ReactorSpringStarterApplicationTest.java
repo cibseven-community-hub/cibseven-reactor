@@ -8,6 +8,7 @@ import org.cibseven.bpm.engine.TaskService;
 import org.cibseven.bpm.engine.runtime.ProcessInstance;
 import org.cibseven.bpm.engine.task.Task;
 import org.cibseven.community.reactor.CamundaReactor;
+import org.cibseven.community.reactor.plugin.ReactorProcessEnginePlugin;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,9 +28,17 @@ public class ReactorSpringStarterApplicationTest {
   @Autowired
   private RuntimeService runtimeService;
 
+  @Autowired
+  private ReactorProcessEnginePlugin plugin;
+
   @Test
   public void contains_plugin() throws Exception {
     assertThat(CamundaReactor.eventBus(processEngine)).isNotNull();
+  }
+
+  @Test
+  public void reactor_listener_first_on_user_task_from_application_yml() {
+    assertThat(plugin.isReactorListenerFirstOnUserTask()).isTrue();
   }
 
   @Test
